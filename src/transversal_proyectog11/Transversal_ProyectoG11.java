@@ -1,9 +1,11 @@
 package transversal_proyectog11;
+
 import java.sql.Connection;
 import java.time.LocalDate;
 import transversal_proyectog11.AccesoADatos.AlumnoData;
 import transversal_proyectog11.AccesoADatos.Conexion;
 import transversal_proyectog11.entidades.Alumno;
+
 public class Transversal_ProyectoG11 {
     public static void main(String[] args) {
        
