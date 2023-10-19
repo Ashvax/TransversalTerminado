@@ -1,7 +1,7 @@
 
 package transversal_proyectog11.entidades;
 public class Materia {
-    protected int idMateria;
+     protected int idMateria;
     protected String nombre;
     protected int anioMateria;
     protected boolean activo;

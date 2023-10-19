@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-10-2023 a las 21:22:01
+-- Tiempo de generación: 14-10-2023 a las 20:49:34
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -43,9 +43,11 @@ CREATE TABLE `alumno` (
 --
 
 INSERT INTO `alumno` (`idAlumno`, `dni`, `apellido`, `nombre`, `fechaNac`, `estado`) VALUES
-(1, 46332823, 'Rotta', 'Alejandro', '2005-02-09', 1),
-(2, 42239916, 'Veliz', 'ivo', '1999-12-05', 1),
-(3, 45923456, 'Cuk', 'Gonzalo', '2004-07-01', 1);
+(1, 1234, 'Lopez', 'Juan', '2000-05-31', 1),
+(2, 42239916, 'Veliz', 'Ivo', '1999-12-05', 1),
+(6, 45502620, 'Rotta', 'Alejandro', '2005-02-09', 1),
+(7, 45202852, 'Cuk', 'Gonzalo', '2005-10-03', 1),
+(8, 12312312, 'Luna', 'Juan Pedro', '1980-04-25', 0);
 
 -- --------------------------------------------------------
 
@@ -65,12 +67,11 @@ CREATE TABLE `inscripcion` (
 --
 
 INSERT INTO `inscripcion` (`idInscripcion`, `nota`, `idAlumno`, `idMateria`) VALUES
-(2, 10, 1, 1),
-(3, 10, 1, 2),
-(4, 10, 2, 1),
-(5, 10, 2, 3),
-(6, 10, 3, 2),
-(7, 10, 3, 4);
+(1, 9, 7, 1),
+(2, 8, 2, 2),
+(3, 10, 6, 3),
+(4, 9, 6, 2),
+(5, 7, 7, 2);
 
 -- --------------------------------------------------------
 
@@ -90,10 +91,10 @@ CREATE TABLE `materia` (
 --
 
 INSERT INTO `materia` (`idMateria`, `nombre`, `año`, `estado`) VALUES
-(1, 'Matemática', 2023, 1),
-(2, 'Lengua', 2023, 1),
-(3, 'Biología', 2023, 1),
-(4, 'Química', 2023, 1);
+(1, 'Estructura De Datos', 2023, 1),
+(2, 'Laboratorio 1', 2023, 1),
+(3, 'Web 1', 2023, 1),
+(4, 'Laboratorio 2', 2024, 1);
 
 --
 -- Índices para tablas volcadas
@@ -111,8 +112,7 @@ ALTER TABLE `alumno`
 --
 ALTER TABLE `inscripcion`
   ADD PRIMARY KEY (`idInscripcion`),
-  ADD UNIQUE KEY `idAlumno` (`idAlumno`,`idMateria`),
-  ADD KEY `inscripcion_ibfk_2` (`idMateria`);
+  ADD UNIQUE KEY `idAlumno` (`idAlumno`,`idMateria`);
 
 --
 -- Indices de la tabla `materia`
@@ -129,13 +129,13 @@ ALTER TABLE `materia`
 -- AUTO_INCREMENT de la tabla `alumno`
 --
 ALTER TABLE `alumno`
-  MODIFY `idAlumno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idAlumno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `inscripcion`
 --
 ALTER TABLE `inscripcion`
-  MODIFY `idInscripcion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idInscripcion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `materia`
