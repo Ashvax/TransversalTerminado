@@ -2,10 +2,9 @@ package transversal_proyectog11;
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.util.List;
-import transversal_proyectog11.AccesoADatos.AlumnoData;
-import transversal_proyectog11.AccesoADatos.Conexion;
-import transversal_proyectog11.AccesoADatos.MateriaData;
+import transversal_proyectog11.AccesoADatos.*;
 import transversal_proyectog11.entidades.Alumno;
+import transversal_proyectog11.entidades.Inscripcion;
 import transversal_proyectog11.entidades.Materia;
 public class Transversal_ProyectoG11 {
     public static void main(String[] args) {
@@ -68,5 +67,15 @@ public class Transversal_ProyectoG11 {
     System.out.println("Estado: " + materia.isActivo());
     System.out.println();
    }*/
+       
+       AlumnoData ad= new AlumnoData();
+       MateriaData md = new MateriaData();
+       InscripcionData id = new InscripcionData();
+       
+       Alumno Alejandro = ad.buscarAlumno(1);
+       Materia bio = md.buscarMateria(3);
+       Inscripcion insc = new Inscripcion(Alejandro, bio, 9);
+       id.guardarInscripcion(insc);              
+       
         }
     }
