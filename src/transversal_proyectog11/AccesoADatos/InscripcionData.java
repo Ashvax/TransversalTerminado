@@ -16,7 +16,7 @@ public class InscripcionData {
     private Connection con = null;
     
     public InscripcionData(){
-        this.con = Conexion.getconexion();
+        this.con = Conexion.getConexion();
     }
     
     public void guardarInscripcion(Inscripcion inscrip){
