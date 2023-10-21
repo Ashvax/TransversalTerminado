@@ -17,7 +17,7 @@ public class AlumnoData {
     private Connection con=null;
     
     public AlumnoData(){
-        con=Conexion.getConexion();
+        con=Conexion.getconexion();
     }
     public void guardarAlumno(Alumno alumno){
         String sql="INSERT INTO alumno(dni, apellido, nombre,fechaNac, estado)"+

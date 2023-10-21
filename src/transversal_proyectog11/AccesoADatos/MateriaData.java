@@ -12,10 +12,10 @@ import transversal_proyectog11.AccesoADatos.Conexion;
 import transversal_proyectog11.entidades.Materia;
 
 public class MateriaData {
-    private Connection con = null;
+    private Connection con;
 
     public MateriaData() {
-        con = Conexion.getConexion();
+        con = Conexion.getconexion();
     }
 
     public void guardarMateria(Materia materia) {

@@ -18,7 +18,7 @@ public class Conexion {
     
     private Conexion(){}
     
-    public static Connection getConexion(){
+    public static Connection getconexion(){
         if(connection==null){
             try {
                 Class.forName("org.mariadb.jdbc.Driver");
