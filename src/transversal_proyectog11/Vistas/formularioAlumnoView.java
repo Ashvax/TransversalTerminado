@@ -201,31 +201,40 @@ public class formularioAlumnoView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarButtonActionPerformed
-          try{
-        Integer dni = Integer.parseInt(jtDNI.getText());
-        
-        Alumno alumnoActual = 
-              
+          try {
+    Integer dni = Integer.parseInt(jtDNI.getText());
 
+    AlumnoData alumnoData = new AlumnoData();
+    Alumno alumnoActual = alumnoData.buscarAlumnoPorDni(dni);
 
-        if(AlumnoActual!=null){
-            jtApellido.setText(AlumnoActual.getApellido());
-            jtNombre.setText(AlumnoActual.getNombre());
-            jrEstado.setSelected(AlumnoActual.isActivo());
-            LocalDate lc= AlumnoActual.getFechaNac();
-            java.util.Date date=java.util.Date.from(lc.atStartOfDay(ZoneId.systemDefault()).toInstant);
+    if (alumnoActual != null) {
+        jtApellido.setText(alumnoActual.getApellido());
+        jtNombre.setText(alumnoActual.getNombre());
+        jrEstado.setSelected(alumnoActual.isActivo());
+
+        LocalDate fechaNacimiento = alumnoActual.getFechaNac();
+
+        if (fechaNacimiento != null) {
+            Date date = Date.from(fechaNacimiento.atStartOfDay(ZoneId.systemDefault()).toInstant());
             jcFechaNac.setDate(date);
-        }
+        } else {
 
-        } catch(NumberFormatException ex){
-            JOptionPane.showMessageDialog(this, "Debe ingresar un número válido");
         }
+    } else {
+
+    }
+} catch (NumberFormatException ex) {
+    JOptionPane.showMessageDialog(this, "Debe ingresar un número válido de DNI");
+} catch (Exception ex) {
+ 
+    JOptionPane.showMessageDialog(this, "Ha ocurrido un error: " + ex.getMessage());
+}
     }//GEN-LAST:event_buscarButtonActionPerformed
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
-        limpiarCampos();
-        AlumnoActual=null;
 
+        limpiarCampos();       
+        AlumnoActual=null;
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
