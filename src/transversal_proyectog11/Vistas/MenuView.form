@@ -34,6 +34,16 @@
               <Image iconType="3" name="/recursos/KBJGh0w.png"/>
             </Property>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="itemInscripciones">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Formulario Inscripci&#xf3;n"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemInscripcionesActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="menuNotas">
           <Properties>

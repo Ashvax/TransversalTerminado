@@ -32,6 +32,7 @@ public class MenuView extends javax.swing.JFrame {
         itemAlumnos = new javax.swing.JMenuItem();
         menuMateria = new javax.swing.JMenu();
         menuInscripcion = new javax.swing.JMenu();
+        itemInscripciones = new javax.swing.JMenuItem();
         menuNotas = new javax.swing.JMenu();
         menuSalir = new javax.swing.JMenu();
 
@@ -64,6 +65,15 @@ public class MenuView extends javax.swing.JFrame {
         jMenuBar1.add(menuMateria);
 
         menuInscripcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/KBJGh0w.png"))); // NOI18N
+
+        itemInscripciones.setText("Formulario Inscripción");
+        itemInscripciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemInscripcionesActionPerformed(evt);
+            }
+        });
+        menuInscripcion.add(itemInscripciones);
+
         jMenuBar1.add(menuInscripcion);
 
         menuNotas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/tGeOqJ8.png"))); // NOI18N
@@ -95,6 +105,14 @@ public class MenuView extends javax.swing.JFrame {
         alumno.setVisible(true);
         escritorio.add(alumno);
     }//GEN-LAST:event_itemAlumnosActionPerformed
+
+    private void itemInscripcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemInscripcionesActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        formularioInscripcionView inscripcion = new formularioInscripcionView();
+        inscripcion.setVisible(true);
+        escritorio.add(inscripcion);
+    }//GEN-LAST:event_itemInscripcionesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -135,6 +153,7 @@ public class MenuView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenuItem itemAlumnos;
+    private javax.swing.JMenuItem itemInscripciones;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu manuAlumno;
     private javax.swing.JMenu menuInscripcion;

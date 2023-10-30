@@ -6,17 +6,13 @@ package transversal_proyectog11.Vistas;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
-import transversal_proyectog11.AccesoADatos.AlumnoData;
-import transversal_proyectog11.Transversal_ProyectoG11;
 import javax.swing.JOptionPane;
-import java.util.List;
-import transversal_proyectog11.AccesoADatos.Conexion;
-import transversal_proyectog11.AccesoADatos.InscripcionData;
-import transversal_proyectog11.AccesoADatos.MateriaData;
+import transversal_proyectog11.AccesoADatos.AlumnoData;
 import transversal_proyectog11.entidades.Alumno;
-import transversal_proyectog11.entidades.Inscripcion;
-import transversal_proyectog11.entidades.Materia;
+import transversal_proyectog11.Transversal_ProyectoG11;
+
 
 /**
  *
@@ -89,8 +85,18 @@ public class formularioAlumnoView extends javax.swing.JFrame {
         });
 
         jbEliminar.setText("Eliminar");
+        jbEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEliminarActionPerformed(evt);
+            }
+        });
 
         jbGuardar.setText("Guardar");
+        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuardarActionPerformed(evt);
+            }
+        });
 
         jbSalir.setText("Salir");
 
@@ -162,9 +168,9 @@ public class formularioAlumnoView extends javax.swing.JFrame {
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtNombre))
                 .addGap(38, 38, 38)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jrEstado))
+                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jrEstado, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(29, 29, 29)
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -195,12 +201,14 @@ public class formularioAlumnoView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarButtonActionPerformed
-         try{
+          try{
         Integer dni = Integer.parseInt(jtDNI.getText());
-        alumnoActual = 
         
+        Alumno alumnoActual = 
+              
 
-        if(alumnoActual != null){
+
+        if(AlumnoActual!=null){
             jtApellido.setText(AlumnoActual.getApellido());
             jtNombre.setText(AlumnoActual.getNombre());
             jrEstado.setSelected(AlumnoActual.isActivo());
@@ -208,14 +216,61 @@ public class formularioAlumnoView extends javax.swing.JFrame {
             java.util.Date date=java.util.Date.from(lc.atStartOfDay(ZoneId.systemDefault()).toInstant);
             jcFechaNac.setDate(date);
         }
+
         } catch(NumberFormatException ex){
             JOptionPane.showMessageDialog(this, "Debe ingresar un número válido");
         }
     }//GEN-LAST:event_buscarButtonActionPerformed
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
-        // TODO add your handling code here:
+        limpiarCampos();
+        AlumnoActual=null;
+
     }//GEN-LAST:event_jbNuevoActionPerformed
+
+    private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
+        
+          if(AlumnoActual!=nuill){
+            AlumnoData.eliminarAlumno(AlumnoActual.getIdAlumno());
+            AlumnoActual=null;
+            limpiarCampos();
+        } else{
+            JOptionPane.showMessageDialog(this, "No hay un alumno seleccionado");
+        }
+    }
+    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {
+            dispose();
+    }//GEN-LAST:event_jbEliminarActionPerformed
+
+    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+
+         try{
+            Integer dni = Integer.parseInt(jtDNI.getText());
+            String nombre = jtNombre.getText();
+            String apellido = jtApellido.getText();
+            if(nombre.isEmpty()||apellido.isEmpty()){
+                 JOptionPane.showMessageDialog(this, "No puede haber campos vacíos");
+                 return;
+            }
+
+            java.util.Date sfecha = jcFechaNac.getDate();
+            LocalDate FechaNac = sfecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            Boolean estado = jrEstado.isSelected();
+            if(AlumnoActual==null){
+                AlumnoActual = new Alumno(dni,apellido,nombre,FechaNac,estado);
+                AlumnoData.guardarAlumno(AlumnoActual);
+
+            }else {
+                AlumnoActual.setDni(dni);
+                AlumnoActual.setApellido(apellido);
+                AlumnoActual.setNombre(nombre);
+                AlumnoActual.setFechaNac(FechaNac);
+                AlumnoData.modificarAlumno(AlumnoActual);
+            }
+        }catch(NumberFormatException asd){
+            JOptionPane.showMessageDialog(this, "Debe ingresar un DNI válido");
+        }
+    }//GEN-LAST:event_jbGuardarActionPerformed
     private void limpiarCampos(){
             jtDNI.setText("");
             jtApellido.setText("");

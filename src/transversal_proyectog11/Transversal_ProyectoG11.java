@@ -21,32 +21,37 @@ public class Transversal_ProyectoG11 {
     alu.guardarAlumno(juan);
     alu.modificarAlumno(juan);
     alu.borrarAlumno(8);
-    Alumno alumnoEncontrado=alu.buscarAlumnoPorDni(1234);
+    Alumno alumnoEncontrado = alu.buscarAlumnoPorDni(1234);
+    Alumno alumnoActual = alu.buscarAlumnoPorDni(1234);
         if(alumnoEncontrado!=null){
         System.out.println("dni"+alumnoEncontrado.getDni());
         System.out.println("apellido"+alumnoEncontrado.getApellido()); 
         
-       /* AlumnoData alu=new AlumnoData();
-        for(Alumno alumno:alu.listarAlumnos()){
+    
+    for(Alumno alumno:alu.listarAlumnos()){
             System.out.println(alumno.getDni());
             System.out.println(alumno.getApellido());
             System.out.println(alumno.getNombre());
             System.out.println(alumno.getFechaNac());
-        }*/
+    }
        
-        // Crear una instancia de MateriaData
-        /*MateriaData materiaData = new MateriaData();*/
+     //Crear una instancia de MateriaData
+    MateriaData materiaData = new MateriaData();
 
-        // Crear una materia y guardarla
-       /* Materia mate = new Materia("Ingles", 2024, true);
-        MateriaData mat=new MateriaData();
-        mat.guardarMateria(mate); */
-        // Modificar una materia existente
-        /* MateriaData materiaData = new MateriaData();
+    //Crear una materia y guardarla
+    Materia mate = new Materia("Ingles", 2024, true);
+    
+    MateriaData mat=new MateriaData();
+        mat.guardarMateria(mate);
+        
+    // Modificar una materia existente
+    
+    //MateriaData materiaData = new MateriaData();
+    
     Materia materia = new Materia(2, "Fisica", 2023, true);
     
-    materiaData.modificarMateria(materia);*/
-        /*MateriaData materiaData = new MateriaData();
+    materiaData.modificarMateria(materia);
+    /*MateriaData materiaData = new MateriaData();
     Materia materiaEncontrada = materiaData.buscarMateria(1);
 
     if (materiaEncontrada != null) {
@@ -56,14 +61,14 @@ public class Transversal_ProyectoG11 {
     } else {
         System.out.println("Materia no encontrada.");
     }
-}*/
+    }*/
 
-        // Borrar una materia existente
-       /*MateriaData materiaData = new MateriaData();
-        materiaData.eliminarMateria(4);*/
+    // Borrar una materia existente
+    /*MateriaData materiaData = new MateriaData();
+    materiaData.eliminarMateria(4);*/
 
-        // Listar todas las materias
-       /* MateriaData materiaData = new MateriaData();
+    // Listar todas las materias
+    /* MateriaData materiaData = new MateriaData();
     List<Materia> materiasActivas = materiaData.listarMaterias();
 
     for (Materia materia : materiasActivas) {
